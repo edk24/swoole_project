@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <script src="https://cdn.staticfile.org/jquery/3.4.0/jquery.min.js"></script>
+    </head>
+<script>
+    var ws = new WebSocket("ws://127.0.0.1:8848");
+
+    ws.onopen = function (e) {
+        console.log('onopen');
+        ws.send('hello');
+    }
+    ws.onmessage = function(e) { 
+        var body = JSON.parse(e.data);
+        console.log('onmessage');
+        console.log(body);
+    }; 
+    ws.onclose = function (e) {
+        console.log('onclose');
+    }
+</script>
+</html>
